@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+<title>Configuração de Dispositivos</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/paginaConfig.css') }}">
+
+<div class="container">
+    <h2 class="titulo-pagina">Configuração de Dispositivos</h2>
+
+    <!-- 📋 Tabela -->
+    <div class="tabela-container">
+        <table class="table table-striped table-bordered" id="tabelaDispositivos">
+            <thead class="table-dark">
+                <tr>
+                    <th>Setor</th>
+                    <th>IP</th>
+                    <th>Quantidade Leitos</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in dispositivos %}
+                <tr>
+                    
+                    <td>{{ d.setor }}</td>
+                    <td>{{ d.ip }}</td>
+                    <td>{{ d.qtd_leitos }}</td>
+                    <td>
+                        {% if d.situacao %}
+                            <span class="badge bg-success">Ativo</span>
+                        {% else %}
+                            <span class="badge bg-danger">Inativo</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-center">
+                    <button class="btn btn-sm btn-outline-primary btn-editar"
+                        data-id="{{ d.id }}"
+                        data-setor="{{ d.setor }}"
+                        data-ip="{{ d.ip }}"
+                        data-qtd-leitos="{{ d.qtd_leitos }}"
+                        data-situacao="{{ d.situacao }}">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ➕ Novo -->
+    <div class="botoes mt-4">
+        <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#modalCadastro">
+            + Novo Dispositivo
+        </button>
+    </div>
+</div>
+
+<!-- 🪟 Modal Cadastro -->
+<div class="modal fade" id="modalCadastro" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Cadastrar Dispositivo</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form method="post" action="/config">
+                <div class="modal-body">
+                    
+
+                    <div class="mb-3">
+                        <label class="form-label">Setor</label>
+                        <input name="setor" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">IP</label>
+                        <input name="ip" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantidade de Leitos</label>
+                        <input name="qtd_leitos" type="number" class="form-control" required>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="situacao" checked>
+                        <label class="form-check-label">Ativo</label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!-- 🪟 Modal Edição -->
+<div class="modal fade" id="modalEditar" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Dispositivo</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form method="post" action="/config">
+                <div class="modal-body">
+                    <input type="hidden" name="id" id="editId">
+
+                    
+
+                    <div class="mb-3">
+                        <label class="form-label">Setor</label>
+                        <input name="setor" id="editSetor" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">IP</label>
+                        <input name="ip" id="editIp" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantidade de Leitos</label>
+                        <input name="qtd_leitos" type="number" id="editQtdLeitos" class="form-control" required>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="situacao" id="editSituacao">
+                        <label class="form-check-label">Ativo</label>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/paginaConfig.js"></script>
+
+{% endblock %}

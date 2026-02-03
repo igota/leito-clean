@@ -1,0 +1,194 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e8f0f2, #ffffff);
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container {
+    text-align: center;
+    padding: 25px;
+    
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #000000;
+    margin-bottom: 35px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+    background: rgba(163, 255, 255, 0.2);
+    padding: 14px 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 155, 255, 0.15);
+    backdrop-filter: blur(4px);
+}
+
+/* Grade responsiva adaptada para tablets */
+.leitos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    animation: aparecer 0.4s ease;
+    
+}
+
+/* Item do leito */
+.leito-item {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leito-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Ícone do leito com efeito vidro/espelhado */
+.icone-leito {
+    width: 130px;
+    height: 90px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 8px;
+    border-radius: 16px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    background: #2c3e50;
+    backdrop-filter: blur(10px) brightness(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow:
+        0 6px 0 #ffffffc7,                    /* sombra sólida (borda inferior azul escuro) */
+        0 12px 20px rgba(0, 0, 0, 0.25); 
+}
+
+/* Efeito de luz suave */
+.icone-leito::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.3), transparent 60%);
+    transform: skewX(-25deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.icone-leito:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+
+
+
+
+/* 🔹 Botão Voltar */
+.btn-voltar {
+    margin-top: 50px;    
+   background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+}
+
+/* CORES */
+.icone-leito.verde span{
+    
+    position: relative;
+    z-index: 2;
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+.icone-leito.amarelo span{
+    
+    position: relative;
+    z-index: 2;
+    font-size: 30px;
+    font-weight: 700;
+    color: #000000;
+    
+    
+}
+
+.icone-leito.amarelo{
+    background-color: #f1c40f;
+}
+
+.icone-leito.verde{
+    background-color: rgba(25, 148, 13, 0.8);
+
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (orientation: landscape) {
+    body {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        padding: 8px 8px;
+        margin-top: auto;
+        margin-bottom: 10px;
+       
+        
+    }
+
+    .container {
+        width: 95%;
+        
+    }
+    
+
+    .leitos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        margin-bottom: 25px;
+        
+       
+    }
+
+    .icone-leito {
+        font-size: 15px;
+    }
+
+    .btn-voltar {
+        font-size: 1rem;
+        margin: auto;
+    }
+}

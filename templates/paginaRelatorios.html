@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+<title>LeitoClean - Relatórios</title>
+<link rel="stylesheet" href="/static/css/paginaRelatorios.css">
+
+
+<div class="relatorios-container">
+
+    <h2 class="titulo-pagina">Relatórios</h2>
+
+    <div class="relatorios-cards">
+
+        <div class="relatorio-card" data-tipo="leito">
+            <i class="fas fa-bed"></i>
+            <h3>Por Leito</h3>
+           
+        </div>
+
+
+
+    </div>
+</div>
+
+<!-- POPUP -->
+<div id="popupRelatorio" class="popup oculto">
+    <div class="popup-conteudo">
+
+        <span class="fechar-popup">&times;</span>
+
+        <h3 id="tituloPopup">Gerar Relatório</h3>
+
+        <input type="hidden" id="tipoRelatorio">
+
+        <div class="form-relatorio">
+
+            
+
+            <label>Setor</label>
+            <select id="setor">
+                <option value="">Todos</option>
+            </select>
+
+            <label>Leito</label>
+            <select id="leito">
+                <option value="">Todos</option>
+            </select>
+
+            <label>Tipo de Limpeza</label>
+            <select id="tipoLimpeza">
+                <option value="">Todos os Tipos</option>
+                <option value="Concorrente">Concorrente</option>
+                <option value="Longa Permanência">Longa Permanência</option>
+                <option value="Alta / Óbito / Transferência">Alta / Óbito / Transferência</option>
+                
+            </select>
+
+            <label>Status</label>
+            <select id="status">
+                <option value="">Todos os Status</option>
+                <option value="Em Andamento">Em Andamento</option>
+                <option value="Concluida">Concluida</option>
+                <option value="Pendente">Pendente</option>
+            </select>
+
+            <label>Período</label>
+            <div class="periodo">
+                <input type="date" id="dataInicio">
+                <input type="date" id="dataFim">
+            </div>
+
+            <div class="periodos-rapidos">
+                <button type="button" class="periodo-btn" data-periodo="hoje">Hoje</button>
+                <button type="button" class="periodo-btn" data-periodo="7dias">Últimos 7 dias</button>
+                <button type="button" class="periodo-btn" data-periodo="30dias">Últimos 30 dias</button>
+            </div>
+
+
+            
+            <button id="btnGerarRelatorio">
+                <i class="fas fa-chart-bar"></i> Gerar Relatório
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/paginaRelatorios.js"></script>
+
+{% endblock %}

@@ -1,0 +1,395 @@
+
+:root {
+    --menu-width: 90px;
+    --cor-primaria: rgb(1, 55, 87);
+    --fundo-base: #f4f8fb;
+}
+.painel-header {
+    position: relative;           /* base para posicionamento */
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* TÍTULO CENTRAL REAL */
+.painel-header h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #013757;
+}
+
+
+
+.setor-selector select {
+    padding: 6px 12px;
+    margin-right: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+
+.painel-container {
+    text-align: center;
+   
+    
+    
+}
+
+.grade-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 0;
+    
+}
+
+
+
+.tabela-limpezas {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tabela-limpezas th {
+    background-color: rgba(1, 55, 87, 1);
+    color: #ffffff;
+    padding: 15px 12px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.tabela-limpezas td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+.tabela-limpezas tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-limpezas tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Indicador de status */
+.status-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+.view-buttons {
+    display: flex;
+    gap: 10px;
+    
+}
+
+.view-btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background: #1e1e1e;
+    color: #fff;
+    cursor: pointer;
+}
+
+.view-btn.ativo {
+    background: #007bff;
+    border-color: #007bff;
+}
+
+
+.leito-box {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+}
+
+/* CONTROLES À DIREITA */
+.controls-container {
+    margin-left: auto;           /* empurra para a direita */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+
+
+
+.grid-setores {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+}
+
+.setor-card {
+    position: relative;
+
+    background: linear-gradient(
+        180deg,
+        #1e5fa8 0%,
+        #2b6fb8 45%,
+        #3a7fc7 100%
+    );
+
+    padding: 22px;
+    border-radius: 18px;
+
+    /* Profundidade 3D para TV */
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.14),
+        0 18px 36px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+    color: #ffffff;
+    font-size: 1.25rem;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+
+.setor-card:hover {
+    transform: translateY(-6px) scale(1.02);
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.25),
+        0 20px 40px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+
+.setor-card h3 {
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.grid-leitos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.leito-card {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+.painel-status {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+   
+}
+
+.status-box {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.status-box span {
+    font-size: 30px;
+    display: block;
+}
+
+.status-box small {
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.status-box.concluida {
+    background: rgb(28, 185, 14);
+}
+
+.status-box.andamento {
+    background: #f1c40f;
+    color: #000;
+}
+
+.status-box.pendente {
+    background: #e74c3c;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 🟢 Concluída */
+.status-concluida {
+    background-color: rgba(25, 148, 13, 0.1);
+}
+
+.status-concluida .status-indicator {
+    background-color: rgba(25, 148, 13, 0.8);
+}
+
+.status-concluida:hover {
+    background-color: rgba(25, 148, 13, 0.2);
+}
+
+/* 🟡 Em andamento */
+.status-andamento {
+    background-color: rgba(255, 166, 0, 0.1);
+}
+
+.status-andamento .status-indicator {
+    background-color: rgba(255, 166, 0, 0.8);
+}
+
+.status-andamento:hover {
+    background-color: rgba(255, 166, 0, 0.2);
+}
+
+/* 🔴 Pendente */
+.status-pendente {
+    background-color: rgba(220, 53, 70, 0.1);
+}
+
+.status-pendente .status-indicator {
+    background-color: rgba(220, 53, 70, 0.8);
+}
+
+.status-pendente:hover {
+    background-color: rgba(220, 53, 70, 0.2);
+}
+
+
+/* 🟢 Concluída */
+.status-concluida-grid {
+    background-color: rgb(28, 185, 14);
+}
+
+.status-concluida-grid .status-indicator {
+    background-color: rgba(25, 148, 13, 0.8);
+}
+
+.status-concluida-grid:hover {
+    background-color: rgba(24, 148, 13, 0.486);
+    cursor: pointer;
+}
+
+/* 🟡 Em andamento */
+.status-andamento-grid {
+    background-color: rgb(255, 166, 0);
+    color: #000;
+}
+
+.status-andamento-grid .status-indicator {
+    background-color: rgb(255, 166, 0);
+    color: #000;
+}
+
+.status-andamento-grid:hover {
+    background-color: rgba(255, 166, 0, 0.651);
+    color: #000;
+    cursor: pointer;
+}
+
+/* 🔴 Pendente */
+.status-pendente-grid {
+    background-color: rgb(220, 53, 70);
+}
+
+.status-pendente-grid .status-indicator {
+    background-color: rgba(220, 53, 70, 0.8);
+}
+
+.status-pendente-grid:hover {
+    background-color: rgba(220, 53, 70, 0.712);
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tabela-container {
+        max-width: 100%;
+        margin: 10px auto;
+    }
+    
+    .tabela-limpezas {
+        font-size: 14px;
+    }
+    
+    .tabela-limpezas th,
+    .tabela-limpezas td {
+        padding: 8px 6px;
+    }
+    
+    .painel-header {
+        padding: 10px 20px;
+        padding-inline-start: 20px;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

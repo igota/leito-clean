@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leito Clean - Tablet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tabletInicio.css') }}">
+    
+    
+
+
+</head>
+<body>
+    <div class="page">
+        <div id="bannerLimpezaAtiva" class="top-notification oculto">
+                <div class="notification-content">
+                    <div class="icon">🧹</div>
+                    <div class="text">
+                        <strong>Limpeza em andamento</strong>
+                        <span id="bannerTexto"></span>
+                    </div>
+                </div>
+
+                <button id="voltarLimpezaBtn" class="btn-notification">
+                    Abrir
+                </button>
+        </div>
+
+        <div class="container">
+            
+            <button class="btn-carregar" id="carregarBtn">Carregar Leitos</button>
+
+            <div id="resultado"></div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Carregando leitos...</p>
+            </div>
+
+            <div class="logos">
+                <img src="{{ url_for('static', filename='img/Logo-ISGH.png') }}" alt="Logo ISGH" class="logoisgh">
+                <div class="separator1"></div>
+                <img src="{{ url_for('static', filename='img/Logo-HRN.png') }}" alt="Logo HRN" class="logohrn">
+                <div class="separator2"></div>
+                <img src="{{ url_for('static', filename='img/logo_leitoclean.png') }}" alt="Logo LeitoClean" class="logoleitoclean">
+            </div>
+
+
+            
+        </div>
+
+        <div class="footer-content">
+                
+            <p class="rodape">Powered Igor Maciel - Todos os direitos reservados.</p>
+                    
+        </div>
+
+    </div>
+
+
+
+
+
+
+    
+
+  
+    <script src="{{ url_for('static', filename='js/tabletInicio.js') }}"></script>
+
+</body>
+</html>

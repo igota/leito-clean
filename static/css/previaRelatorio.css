@@ -1,0 +1,150 @@
+
+
+/* ===== Cabeçalho ===== */
+.previa-header {
+    position: relative;           /* base para centralização real */
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+    margin-top: 30px;
+}
+
+/* TÍTULO CENTRAL REAL */
+.previa-header h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #013757;
+}
+/* ===== Identificação do Relatório ===== */
+.identificacao-relatorio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    align-items: center;
+    justify-items: center;
+    
+    gap: 40px;
+    margin: 20px 0;
+    padding: 18px 24px;
+
+    background: rgba(1, 55, 87, 0.08);
+    border-left: 6px solid rgba(1, 55, 87, 1);
+    border-radius: 8px;
+}
+
+/* Itens individuais */
+.info-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Rótulo */
+.info-item .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+}
+
+/* Valor */
+.info-item .valor {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(1, 55, 87, 1);
+}
+
+
+
+/* BOTÕES À DIREITA */
+.acoes {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-exportar {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-exportar.pdf { background: #d9534f; }
+.btn-exportar.csv { background: #5cb85c; }
+.btn-exportar.xlsx { background: #0275d8; }
+
+.btn-exportar:hover {
+    opacity: 0.85;
+}
+
+
+
+/* ===== Tabela ===== */
+.tabela-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+thead {
+    background: rgba(1, 55, 87, 1);
+    color: #ffffff;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+tbody tr:hover {
+    background: #eef4ff;
+}
+
+/* ===== Rodapé ===== */
+.previa-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.info-voltar {
+
+    margin-left: auto;
+}
+
+.btn-voltar {
+    background: #6c757d;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 14px;
+   
+}
+
+.btn-voltar:hover {
+    background: #5a6268;
+}

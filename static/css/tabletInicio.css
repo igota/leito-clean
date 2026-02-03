@@ -1,0 +1,357 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+    color: #1a202c;
+    margin: 0;
+    min-height: 100vh;
+    
+    
+}
+
+.page{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 900px;
+    padding: 100px;
+    text-align: center;
+   
+}
+
+        .logos{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            gap: 20px;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            
+
+        }
+
+        
+        .logoisgh{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            width: 7rem;
+            
+        }
+
+        .logohrn{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            width: 6rem;
+        }
+        .logoleitoclean{
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #212529;
+            width: 4rem;
+        }
+
+        .separator1 {
+        width: 1.5px; /* Define a largura do traço */
+        height: 35px; /* Altura do traço, ajuste conforme necessário */
+        background-color: #333; /* Cor do traço */
+        }
+
+        .separator2 {
+        width: 1.2px; /* Define a largura do traço */
+        height: 35px; /* Altura do traço, ajuste conforme necessário */
+        background-color: #333; /* Cor do traço */
+        }
+
+        .footer-content {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            gap: 20px;
+            position: fixed;
+            bottom: 1px;
+            left: 50%;
+        
+    }
+
+/* Botão principal - estilo limpeza */
+.btn-carregar {
+    background: linear-gradient(180deg, var(--cor-primaria, #336ca5) 0%, #04305c 100%);        /* 💧 cor principal */
+    color: #ffffff;                         /* texto escuro da paleta */
+    border: none;
+    border-radius: 14px;
+    padding: 20px 45px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow:
+        0 6px 0 #42a4ff59,                    /* sombra sólida (borda inferior azul escuro) */
+        0 12px 20px rgba(0, 0, 0, 0.25);    /* sombra difusa */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform: translateY(0);
+}
+
+.btn-carregar:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 0 #31435359,
+        0 16px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* quando clicado */
+.btn-carregar.subindo {
+    transform: translateY(-25px);
+}
+
+
+#resultado {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #2d3748;
+}
+
+/* === ÁREA DE LOADING === */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1px;
+    transition: margin-top 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+
+
+.loading p {
+    margin-top: 15px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    animation: blink 1.6s infinite ease-in-out;
+}
+
+/* Spinner circular */
+.spinner {
+    border: 6px solid #e2e8f0;
+    border-top: 6px solid #2c3e50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+
+
+
+
+
+.hidden { display: none; }
+
+.fade-in { animation: fadeIn 0.4s; }
+.fade-out { animation: fadeOut 0.4s; }
+
+.btn-inicio {
+    margin-top: 50px;    
+    background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+}
+
+
+
+.top-notification {
+    width: calc(100% - 32px);
+    max-width: 520px;
+
+    background: #ffffff;
+    border-left: 6px solid #ff9800;
+    border-radius: 12px;
+
+    padding: 5px 16px;
+    margin-top: 5px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    /* animação */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* Quando aparece */
+.top-notification:not(.oculto) {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notification-content .icon {
+    font-size: 1.6rem;
+}
+
+.notification-content .text {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.notification-content .text span {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* Botão estilo app */
+.btn-notification {
+    background: #ff9800;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-notification:active {
+    transform: scale(0.95);
+}
+
+/* Quando o banner está visível */
+.banner-visivel .btn-carregar {
+    transform: translateY(-50px); /* sobe o botão */
+    transition: transform 0.3s ease;
+}
+
+.banner-visivel #loading {
+    transform: translateY(-50px); /* sobe o loading também */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+/* Classe utilitária */
+.oculto {
+    display: none;
+}
+
+
+/* =========================================================
+   ANIMAÇÕES
+========================================================= */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+
+
+/* Animações */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Efeitos de fade */
+.fade-in {
+    opacity: 1 !important;
+}
+
+.fade-out {
+    opacity: 0 !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+
+
+@media (orientation: landscape) {
+    body {
+        flex-direction: row;
+    }
+
+    .container {
+        width: 70%;
+    }
+    .logos{
+        bottom: 25px;
+    }
+
+    .logoisgh{
+        width: 5rem;
+    }
+    .logohrn{
+        width: 4rem;
+    }
+    .logoleitoclean{
+        width: 2.5rem;
+    }
+    .footer-content{
+        font-size: 0.6rem;
+    }
+
+
+
+}

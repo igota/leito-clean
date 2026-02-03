@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpeza de Leito</title>
+    <link rel="stylesheet" href="/static/css/tabletLimpeza.css">
+</head>
+<body>
+    <h1 id="tituloLeito"></h1>
+    <p id="infoPaciente"></p>
+    <p id="infoUltima"></p>
+
+    <button id="iniciarLimpezaBtn" class="btn-limpeza">INICIAR LIMPEZA</button>
+    <button id="voltarBtn" class="btn-voltar">Voltar</button>
+
+    <!-- Popup ID Cartão (usuário da limpeza) -->
+    <div id="popupIdcartao" class="popup oculto">
+        <div class="popup-conteudo">
+            <span class="fechar-popup" id="fecharIdcartao">&times;</span>
+            <h3>ASG</h3>
+            <p>Aproxime o cartão do leitor</p>
+            <input 
+                id="idcartaoInput" 
+                maxlength="10" 
+                pattern="[0-9]*" 
+                inputmode="none"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                type="text"
+                
+            >
+        </div>
+    </div>
+
+    <!-- Popup do tipo de limpeza -->
+    <div id="popupTipo" class="popup oculto">
+        <div class="popup-conteudo">
+            <span class="fechar-popup" id="fecharTipo">&times;</span>
+            <h3>Selecione o tipo de limpeza</h3>
+            <button class="tipoBtn" data-tipo="Concorrente">🧽 Concorrente</button>
+            <button class="tipoBtn" data-tipo="Terminal">🛏️ Terminal</button>
+        </div>
+    </div>
+
+    <!-- Popup Terminal -->
+    <div id="popupTerminal" class="popup oculto">
+        <div class="popup-conteudo">
+            <span class="fechar-popup" id="fecharTerminal">&times;</span>
+            <h3>Selecione o tipo de Terminal</h3>
+            <button class="tipoBtn" data-tipo="Alta / Óbito / Transferência">🛏️ Alta / Óbito / Transferência</button>
+            <button class="tipoBtn" data-tipo="Longa Permanência">🕒 Longa Permanência</button>
+        </div>
+    </div>
+
+   
+
+    <!-- Popup de confirmação -->
+    <div id="popupConfirmacao" class="popup oculto">
+        <div class="popup-conteudo">
+            
+            <h3 id="mensagemConfirmacao"></h3>
+            <div class="botoes-confirmacao">
+                <button id="confirmarInicio">✅ Confirmar</button>
+                <button id="cancelarInicio">❌ Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de mensagens -->
+    <div id="popupMensagem" class="popup-mensagem oculto">
+    <div class="popup-conteudo">
+        <div class="popup-icone" id="popupIcone">⚠️</div>
+        <p id="mensagemTexto"></p>
+        <button id="fecharMensagemBtn">OK</button>
+    </div>
+    </div>
+
+
+
+    
+
+    <script src="/static/js/tabletLimpeza.js"></script>
+</body>
+</html>

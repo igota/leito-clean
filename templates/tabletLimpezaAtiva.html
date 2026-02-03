@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Limpeza em andamento</title>
+    <link rel="stylesheet" href="/static/css/tabletLimpezaAtiva.css">
+</head>
+<body>
+    <!-- Container principal para os cards -->
+    <div id="containerLimpezas" class="cards-container"></div>
+
+    <!-- Popup ID Cartão do técnico de enfermagem -->
+    <div id="popupFinalizar" class="popup oculto">
+        <div class="popup-conteudo">
+            <span class="fechar-popup" data-close="popupFinalizar" id="fecharFinalizar">✖</span>
+            <h3>Enfermeiro(a)</h3>
+            <p>Aproxime o cartão do leitor</p>
+            <input 
+                id="idcartaoFinalizarInput"
+                type="text"
+                class="form-control"
+                maxlength="10"
+                minlength="9"
+                pattern="^\d{9,10}$"
+                inputmode="none"
+                autocomplete="off"
+                autocorrect="off"
+                autocapitalize="off"
+                spellcheck="false"
+                required
+            >
+        </div>      
+    </div>
+
+    <!-- Popup de confirmação -->
+    <div id="popupConfirmacao" class="popup oculto">
+        <div class="popup-conteudo">
+            
+            <h3 id="mensagemConfirmacao"></h3>
+            <div class="botoes-confirmacao">
+                <button id="confirmarInicio">✅ Confirmar</button>
+                <button id="cancelarInicio">❌ Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de mensagens -->
+    <div id="popupMensagem" class="popup-mensagem oculto">
+        <div class="popup-conteudo">
+            <div class="popup-icone" id="popupIcone">⚠️</div>
+            <p id="mensagemTexto"></p>
+            <button id="fecharMensagemBtn">OK</button>
+        </div>
+    </div>
+
+    <script src="/static/js/tabletLimpezaAtiva.js"></script>
+</body>
+</html>

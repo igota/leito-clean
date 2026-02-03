@@ -1,0 +1,120 @@
+h2{
+   
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #013757;
+
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+/* Estilos da tabela */
+.tabela-consulta {
+    border-collapse: collapse;
+    margin: 0 auto;   /* 👈 centraliza horizontalmente */
+        
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.tabela-consulta td {
+    padding-inline: 190px;
+    padding-block: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    color: #555;
+    border: 1px solid #ddd;
+    font-size: 18px ;
+}
+
+.tabela-consulta th {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    font-size: 0.85rem;
+    color: white;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.tabela-consulta thead {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: rgba(1, 55, 87, 1); /* fundo sólido para cobrir linhas ao rolar */
+    color: #fff;
+    
+    
+}
+
+/* Hover nas linhas */
+.tabela-consulta tbody tr:hover {
+    background: #dfdddd !important;
+}
+
+/* Alternância de cor nas linhas */
+.tabela-consulta tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+
+
+/* Estilos para os cabeçalhos clicáveis */
+th {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+th:hover {
+    background-color: #0056b3;
+}
+
+th.asc::after {
+    content: ' ▲';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+th.desc::after {
+    content: ' ▼';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .tabela-consulta {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .tabela-consulta td, .tabela-consulta th {
+        padding: 10px;
+    }
+
+    .botao-voltar {
+        width: 100%;
+        max-width: none;
+    }
+}

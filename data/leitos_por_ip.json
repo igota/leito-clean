@@ -1,0 +1,302 @@
+{
+    "127.0.0.1": {
+        "ultima_atualizacao": "2026-02-02 17:01:09",
+        "leitos": [
+            {
+                "prontuario": "106028",
+                "paciente": "EUGENIO MAGALHAES DE OLIVEIRA FILHO",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "01",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "4",
+                "dias_hospital": "10",
+                "escala_braden": "13 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "351926",
+                "paciente": "JOSE RUBENS DE ARAUJO LOPES",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "02",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "12",
+                "dias_hospital": "12",
+                "escala_braden": "11 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352367",
+                "paciente": "ANTONIA FERREIRINHA DE VASCONCELOS SOUSA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "03",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "1",
+                "dias_hospital": "1",
+                "escala_braden": "13 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "296468",
+                "paciente": "ANTONIO FRANCISCO MARTINS DE ABREU",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "04",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "23",
+                "dias_hospital": "26",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "351276",
+                "paciente": "JOAO BATISTA PEREIRA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "05",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "14",
+                "dias_hospital": "25",
+                "escala_braden": "16 pontos - RISCO LEVE (15-18)"
+            },
+            {
+                "prontuario": "207030",
+                "paciente": "PEDRO BARBOSA SILVA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "06",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "8",
+                "dias_hospital": "19",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "351491",
+                "paciente": "JOSE MARINONE RODRIGUES",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "07",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "1",
+                "dias_hospital": "18",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "185089",
+                "paciente": "PEDRO EVALDO LIMA CRUZ",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "08",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "8",
+                "dias_hospital": "23",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "189933",
+                "paciente": "LUZIA LOPES DE SOUSA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "09",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "3",
+                "dias_hospital": "4",
+                "escala_braden": "14 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "352236",
+                "paciente": "ANTONIO VITORINO LINHARES DE OLIVEIRA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "10",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "5",
+                "dias_hospital": "7",
+                "escala_braden": "15 pontos - RISCO LEVE (15-18)"
+            }
+        ]
+    },
+    "10.3.2.163": {
+        "ultima_atualizacao": "2026-02-02 17:01:13",
+        "leitos": [
+            {
+                "prontuario": "106028",
+                "paciente": "EUGENIO MAGALHAES DE OLIVEIRA FILHO",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "01",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "4",
+                "dias_hospital": "10",
+                "escala_braden": "13 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "351926",
+                "paciente": "JOSE RUBENS DE ARAUJO LOPES",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "02",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "12",
+                "dias_hospital": "12",
+                "escala_braden": "11 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352367",
+                "paciente": "ANTONIA FERREIRINHA DE VASCONCELOS SOUSA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "03",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "1",
+                "dias_hospital": "1",
+                "escala_braden": "13 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "296468",
+                "paciente": "ANTONIO FRANCISCO MARTINS DE ABREU",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "04",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "23",
+                "dias_hospital": "26",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "351276",
+                "paciente": "JOAO BATISTA PEREIRA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "05",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "14",
+                "dias_hospital": "25",
+                "escala_braden": "16 pontos - RISCO LEVE (15-18)"
+            },
+            {
+                "prontuario": "207030",
+                "paciente": "PEDRO BARBOSA SILVA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "06",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "8",
+                "dias_hospital": "19",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "351491",
+                "paciente": "JOSE MARINONE RODRIGUES",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "07",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "1",
+                "dias_hospital": "18",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "185089",
+                "paciente": "PEDRO EVALDO LIMA CRUZ",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "08",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "8",
+                "dias_hospital": "23",
+                "escala_braden": "8 pontos - RISCO MUITO ELEVADO (<=9)"
+            },
+            {
+                "prontuario": "189933",
+                "paciente": "LUZIA LOPES DE SOUSA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "09",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "3",
+                "dias_hospital": "4",
+                "escala_braden": "14 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "352236",
+                "paciente": "ANTONIO VITORINO LINHARES DE OLIVEIRA",
+                "setor": "UTI ADULTO III",
+                "numero_leito": "10",
+                "setor_original": "UTI ADULTO III",
+                "dias_leito": "5",
+                "dias_hospital": "7",
+                "escala_braden": "15 pontos - RISCO LEVE (15-18)"
+            },
+            {
+                "prontuario": "351483",
+                "paciente": "RAIMUNDO DE SOUSA MAGALHAES",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "02",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "6",
+                "dias_hospital": "20",
+                "escala_braden": "14 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "323074",
+                "paciente": "EDMILSON RODRIGUES DA COSTA",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "03",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "9",
+                "dias_hospital": "13",
+                "escala_braden": "11 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "345890",
+                "paciente": "ANTONIO FRANCISCO HONORATO RODRIGUES",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "04",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "9",
+                "dias_hospital": "40",
+                "escala_braden": "10 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352185",
+                "paciente": "JOSE EDMILSON DO NASCIMENTO",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "05",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "7",
+                "dias_hospital": "8",
+                "escala_braden": "10 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352559",
+                "paciente": "MARIA SOCORRO FERREIRA NASCIMENTO",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "06",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "1",
+                "dias_hospital": "2",
+                "escala_braden": "10 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352415",
+                "paciente": "LUIZ GONZAGA DE MELO FILHO",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "07",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "2",
+                "dias_hospital": "4",
+                "escala_braden": "10 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352056",
+                "paciente": "ROBERTA FERREIRA BARBOSA",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "08",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "3",
+                "dias_hospital": "5",
+                "escala_braden": "13 pontos - RISCO MODERADO (13-14)"
+            },
+            {
+                "prontuario": "352158",
+                "paciente": "JANES MARIA FERNANDES MESQUITA",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "09",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "8",
+                "dias_hospital": "9",
+                "escala_braden": "10 pontos - RISCO ELEVADO (10-12)"
+            },
+            {
+                "prontuario": "352198",
+                "paciente": "WILSON AZEVEDO JORGE",
+                "setor": "UTI ADULTO IV",
+                "numero_leito": "10",
+                "setor_original": "UTI ADULTO IV",
+                "dias_leito": "5",
+                "dias_hospital": "5",
+                "escala_braden": "15 pontos - RISCO LEVE (15-18)"
+            }
+        ]
+    }
+}

@@ -1,0 +1,176 @@
+/* ===== Página ===== */
+
+h2{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #013757;
+
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+
+/* ===== Cards ===== */
+.relatorios-cards {
+  
+    display: flex;
+    gap: 25px;
+    
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 30px;
+}   
+
+.relatorio-card {
+    background: rgba(1, 55, 87, 1);
+    border-radius: 14px;
+    padding: 25px;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.relatorio-card i {
+    font-size: 38px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.relatorio-card h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.relatorio-card p {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.relatorio-card:hover {
+    background: #0056b3;;
+    transform: translateY(-6px);
+}
+
+/* ===== Popup ===== */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.popup.oculto {
+    display: none;
+}
+
+.popup-conteudo {
+    background: #ffffff;
+    color: #000000;
+    width: 500px;
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+}
+
+.fechar-popup {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* ===== Formulário ===== */
+.form-relatorio label {
+    display: block;
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+.periodo {
+    display: flex;
+    gap: 10px;
+}
+
+.form-relatorio input,
+.form-relatorio select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.exportacao {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.periodos-rapidos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.periodo-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+.periodo-btn:hover {
+    background: #e9e9e9;
+}
+
+.periodo-btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.periodo-btn:hover {
+    background-color: #e9e9e9;
+}
+
+.periodo-btn.ativo {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+
+#btnGerarRelatorio {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#btnGerarRelatorio:hover {
+    background: #0056b3;
+}

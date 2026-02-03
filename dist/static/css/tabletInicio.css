@@ -1,0 +1,253 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+    color: #1a202c;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 900px;
+   
+    
+    padding: 40px;
+    text-align: center;
+}
+
+        .logos{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            gap: 20px;
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            
+
+        }
+
+        
+        .logoisgh{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            width: 7rem;
+            
+        }
+
+        .logohrn{
+            font-size: 1rem;
+            font-weight: 400;
+            color: #212529;
+            width: 6rem;
+        }
+        .logoleitoclean{
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #212529;
+            width: 4rem;
+        }
+
+        .separator1 {
+        width: 1.5px; /* Define a largura do traço */
+        height: 35px; /* Altura do traço, ajuste conforme necessário */
+        background-color: #333; /* Cor do traço */
+        }
+
+        .separator2 {
+        width: 1.2px; /* Define a largura do traço */
+        height: 35px; /* Altura do traço, ajuste conforme necessário */
+        background-color: #333; /* Cor do traço */
+        }
+
+        .footer-content {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #212529;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-50%);
+            gap: 20px;
+            position: fixed;
+            bottom: 1px;
+            left: 50%;
+        
+    }
+
+/* Botão principal - estilo limpeza */
+.btn {
+    background: linear-gradient(180deg, var(--cor-primaria, #336ca5) 0%, #04305c 100%);        /* 💧 cor principal */
+    color: #ffffff;                         /* texto escuro da paleta */
+    border: none;
+    border-radius: 14px;
+    padding: 20px 45px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow:
+        0 6px 0 #42a4ff59,                    /* sombra sólida (borda inferior azul escuro) */
+        0 12px 20px rgba(0, 0, 0, 0.25);    /* sombra difusa */
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #2c3e50;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+#resultado {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    color: #2d3748;
+}
+
+/* === ÁREA DE LOADING === */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.loading p {
+    margin-top: 15px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+    animation: blink 1.6s infinite ease-in-out;
+}
+
+/* Spinner circular */
+.spinner {
+    border: 6px solid #e2e8f0;
+    border-top: 6px solid #2c3e50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+
+.hidden { display: none; }
+
+.fade-in { animation: fadeIn 0.4s; }
+.fade-out { animation: fadeOut 0.4s; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+
+
+/* Animações */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Efeitos de fade */
+.fade-in {
+    opacity: 1 !important;
+}
+
+.fade-out {
+    opacity: 0 !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+.btn-inicio {
+    margin-top: 50px;    
+    background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+}
+
+
+.banner {
+    background: #fff3cd;
+    border-left: 6px solid #ff9800;
+    padding: 14px;
+    margin: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.oculto{
+    display: none;
+}
+
+
+
+@media (orientation: landscape) {
+    body {
+        flex-direction: row;
+    }
+
+    .container {
+        width: 70%;
+    }
+    .logos{
+        bottom: 25px;
+    }
+
+    .logoisgh{
+        width: 5rem;
+    }
+    .logohrn{
+        width: 4rem;
+    }
+    .logoleitoclean{
+        width: 2.5rem;
+    }
+    .footer-content{
+        font-size: 0.6rem;
+    }
+
+
+
+}

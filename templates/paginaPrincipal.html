@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/paginaPrincipal.css">
+<title>LeitoClean - Painel de Limpezas</title>
+<div class="painel-header">
+    <h2>Painel de Limpezas</h2>
+    <div class="controls-container">
+
+        <div class="setor-selector">
+            <label for="selectSetor"></label>
+            <select id="selectSetor">
+                <option value="">Carregando...</option>
+            </select>
+        </div>
+        
+        <div class="view-buttons">
+            <button id="btnLista" class="view-btn ativo" title="Visualização em Lista">
+                <i class="fas fa-list"></i>
+            </button>
+
+            <button id="btnGrade" class="view-btn" title="Visualização em Grade">
+                <i class="fas fa-th-large"></i>
+            </button>
+
+            <button id="btnMaximizar" class="view-btn" title="Maximizar Visualização">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+
+        
+
+    </div>
+    
+</div>
+
+
+<div class="painel-status">
+    <div class="status-box concluida">
+        <span id="qtdConcluida">0</span>
+        <small>Concluídas</small>
+    </div>
+
+    <div class="status-box andamento">
+        <span id="qtdAndamento">0</span>
+        <small>Em Andamento</small>
+    </div>
+
+    <div class="status-box pendente">
+        <span id="qtdPendente">0</span>
+        <small>Pendentes</small>
+    </div>
+        <div class="status-box validacao">
+        <span id="qtdValidacao">0</span>
+        <small>Aguardando Validação</small>
+    </div>
+</div>
+
+
+<div class="painel-container">
+     <!-- Visualização em Grade -->
+    <div id="viewGrade" class="grade-container" ></div>
+
+    <div id="viewLista" class="tabela-container">
+        <p>Selecione um setor para visualizar as limpezas.</p>
+    </div>
+</div>
+
+<script src="/static/js/paginaPrincipal.js"></script>
+{% endblock %}

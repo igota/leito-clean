@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<title>LeitoClean - Prévia do Relatório</title>
+
+<link rel="stylesheet" href="/static/css/previaRelatorio.css">
+
+
+<div class="previa-container">
+
+    <!-- Cabeçalho -->
+    <div class="previa-header">
+        <h2 id="tituloRelatorio">Prévia do Relatório</h2>
+
+        <div class="acoes">
+            <button class="btn-exportar pdf">
+                <i class="fas fa-file-pdf"></i> PDF
+            </button>
+            <button class="btn-exportar csv">
+                <i class="fas fa-file-csv"></i> CSV
+            </button>
+            <button class="btn-exportar xlsx">
+                <i class="fas fa-file-excel"></i> XLSX
+            </button>
+            
+        </div>
+    </div>
+
+    <div class="identificacao-relatorio" id="topoIdentificacao">
+        <div class="info-item">
+            <span class="label">Setor</span>
+            <span class="valor" id="infoSetor">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Leito</span>
+            <span class="valor" id="infoLeito">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Tipo</span>
+            <span class="valor" id="infoTipo">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Status</span>
+            <span class="valor" id="infoStatus">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="label">Período</span>
+            <span class="valor" id="infoPeriodo">-</span>
+        </div>
+        <div class="info-voltar">
+            <button class="btn-voltar" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </button>
+        </div>
+       
+    </div>
+
+
+
+
+    
+    <div id="containerRelatorios"></div>
+
+    
+
+ 
+
+    <script src="/static/js/previaRelatorio.js"></script>
+
+   
+{% endblock %}

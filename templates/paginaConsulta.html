@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>LeitoClean - Consulta</title>
+    <link rel="stylesheet" href="/static/css/paginaConsulta.css">
+    
+
+
+    <div class="container">
+        <h2 class="titulo-pagina">Lista de Cronogramas</h2>
+        <table class="tabela-consulta">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Data de Criação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if historico %}
+                    {% for registro in historico %}
+                        <tr class="linha-cronograma" data-historico-id="{{ registro.id }}" style="cursor: pointer;">
+                            <td><i class="fas fa-file-circle-check"></i> Cronograma {{ registro.numero_sequencial }}</td>
+                            <td>{{ registro.data_criacao }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="2">Nenhum registro encontrado.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('pagina_principal') }}">
+           
+        </a>
+    </div>
+    
+    <!-- Carregar o jQuery primeiro -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Vincule o arquivo JavaScript -->
+    <script src="/static/js/paginaConsulta.js"></script>
+
+
+{% endblock %}

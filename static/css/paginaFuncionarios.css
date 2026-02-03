@@ -1,0 +1,223 @@
+
+
+h2{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #013757;
+
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+
+.status-ativo {
+    background-color: #198754; /* verde Bootstrap */
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-inativo {
+    background-color: #c22d2d; /* verde Bootstrap */
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+
+
+/* ======== CARD DE FILTRO ======== */
+.card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+   
+    
+}
+
+
+
+/* ======== BOTÕES ======== */
+
+
+.botoes {
+    max-width: 550px;           /* largura máxima dos botões */
+    display: flex;
+    justify-content: center;    /* centraliza os botões dentro da div */
+    gap: 10px;
+    margin: 20px auto 0 auto;   /* centraliza a div dentro do form */
+}
+
+
+
+.btn {
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+
+/* Botão de novo usuário */
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* ======== CONTAINER COM ROLAGEM ======== */
+
+
+
+
+/* ======== TABELA ======== */
+.table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+
+/* ======== CABEÇALHO FIXO ======== */
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: rgba(1, 55, 87, 1); /* fundo sólido para cobrir linhas ao rolar */
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    z-index: 2; /* garante que fique sobre as linhas */
+    cursor: pointer; /* indica que é clicável */
+    transition: background-color 0.3s ease;
+     border: 1px solid #ddd;
+     text-align: center;
+}
+
+/* ======== EFEITOS AO PASSAR O MOUSE ======== */
+.table thead th:hover {
+    background-color: #0056b3; /* muda a cor ao passar o mouse */
+}
+
+/* ======== ÍCONES DE ORDENAÇÃO ======== */
+.table thead th.asc::after {
+    content: ' ▲';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.table thead th.desc::after {
+    content: ' ▼';
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* ======== LINHAS ======== */
+.table-striped tbody tr:hover {
+    background-color: #f1f3f5;
+    transition: background 0.2s;
+}
+
+/* ======== ÍCONES ======== */
+.table i {
+    font-size: 1.1rem;
+}
+
+
+
+
+
+/* ======== ÍCONES ======== */
+.table i {
+    font-size: 1.1rem;
+}
+
+/* ======== MODAIS ======== */
+.modal-content {
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    background-color: #2c3e50;
+    color: #fff;
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: 500;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+/* ======== FORMULÁRIOS ======== */
+.form-label {
+    font-weight: 500;
+    color: #2c3e50;
+    
+}
+
+.form-control,
+.form-select {
+    border-radius: 6px;
+    
+}
+
+
+.form-select{
+    cursor: pointer;
+}
+
+.form-check-input {
+    cursor: pointer;    
+}    
+
+input:focus, select:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+}
+
+/* ======== RADIO BUTTONS ======== */
+.form-check-label {
+    color: #495057;
+    
+}
+
+/* ======== RESPONSIVIDADE ======== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+}

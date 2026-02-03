@@ -1,0 +1,206 @@
+
+
+
+
+/* Título */
+h2{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+
+    color: #013757;
+
+    position: relative;
+    margin-bottom: 50px;    
+}
+
+/* Estilização da tabela */
+.tabela-consulta {
+    border-collapse: collapse;
+    margin: 0 auto;   /* 👈 centraliza horizontalmente */
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   
+    
+    
+    
+}
+
+/* Cabeçalho da tabela */
+.tabela-consulta thead {
+    position: sticky;
+    top: 0;
+    background: rgba(1, 55, 87, 1);
+    color: white;
+    z-index: 2;
+    align-items: center;
+    font-size: 16px;
+    
+}
+
+/* Células do cabeçalho */
+.tabela-consulta th {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    border: 1px solid #ddd;
+}
+
+/* Linhas da tabela */
+.tabela-consulta td {
+    padding: 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+
+/* Alternância de cor nas linhas */
+.tabela-consulta tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover nas linhas */
+.tabela-consulta tbody tr:hover {
+    background: #f1f1f1;
+}
+
+
+
+
+th {
+    cursor: pointer; /* Torna o cabeçalho clicável */
+    transition: background-color 0.3s ease;
+}
+
+th:hover {
+    background-color: #0056b3;
+}
+
+th.asc::after {
+    content: ' ▲'; /* Seta para cima (crescente) */
+    font-size: 12px; /* Tamanho da seta */
+    margin-left: 5px; /* Espaço entre o texto e a seta */
+}
+
+th.desc::after {
+    content: ' ▼'; /* Seta para baixo (decrescente) */
+    font-size: 12px; /* Tamanho da seta */
+    margin-left: 5px; /* Espaço entre o texto e a seta */
+}
+
+.buttons {
+    display: flex;
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.botao-imprimir, .botao-exportar ,.botao-voltar{
+    background-color: #007bff; /* Azul vibrante */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px; /* Borda arredondada */
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.botao-imprimir i, .botao-exportar i , .botao-voltar i {
+    font-size: 18px;
+}
+
+.botao-exportar {
+    background-color: #28a745; /* Verde para exportação */
+}
+
+.botao-voltar {
+    background-color: #9c9c9c; /* Verde para exportação */
+}
+
+.botao-imprimir:hover {
+    background-color: #0056b3;
+}
+
+.botao-exportar:hover {
+    background-color: #1e7e34;
+}
+.botao-voltar:hover {
+    background-color: #616060;
+}
+
+.botao-imprimir:active, .botao-exportar:active , .botao-voltar:active {
+    transform: scale(0.95); /* Efeito de clique */
+}
+
+
+
+
+
+
+
+@media print {
+    body {
+        font-family: Arial, sans-serif;
+        color: #000;
+        background: none;
+    }
+
+    .buttons, .botao-voltar {
+        display: none; /* Remove os botões na impressão */
+    }
+
+    
+
+    .tabela-consulta {
+        width: 100%;
+        border-collapse: collapse;
+        max-height: none; /* Remove a limitação de altura */
+        overflow: visible; /* Garante que todo o conteúdo seja visível */
+    }
+
+    .tabela-consulta td, .tabela-consulta th {
+        padding: 7px;
+        text-align: left;
+        border: 0.5px solid #bbb8b8af;
+    }
+
+    .tabela-consulta th {
+        background: #007bff;
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 15px;
+        
+        display: block; /* Garante que o título seja exibido */
+    }
+
+    /* Evita quebras de página no meio da tabela */
+    .tabela-consulta tr {
+        page-break-inside: avoid;
+    }
+
+    /* Esconde a barra de rolagem */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    body {
+        overflow: hidden;
+    }
+}
