@@ -1,0 +1,9 @@
+# Executáveis / build
+dist/
+build/
+*.exe
+
+# Python
+__pycache__/
+venv/
+.env
