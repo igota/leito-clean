@@ -4,16 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
 
             const id = btn.dataset.id;
-            const setor = btn.dataset.setor;
             const ip = btn.dataset.ip;
-            const qtdLeitos = btn.dataset.qtdLeitos;
-            const situacao = Number(btn.dataset.situacao);
+            const setor = btn.dataset.setor;
+            const ativo = Number(btn.dataset.ativo);
 
             document.getElementById("editId").value = id;
-            document.getElementById("editSetor").value = setor;
             document.getElementById("editIp").value = ip;
-            document.getElementById("editQtdLeitos").value = qtdLeitos;
-            document.getElementById("editSituacao").checked = situacao === 1;
+            document.getElementById("editSetor").value = setor;
+            document.getElementById("editAtivo").checked = ativo === 1;
 
             const modal = new bootstrap.Modal(
                 document.getElementById("modalEditar")

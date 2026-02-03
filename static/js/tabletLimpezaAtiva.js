@@ -289,62 +289,53 @@
     }
 
     // 👉 Técnico bipa o cartão
-DOM.inputCartaoFinalizar.addEventListener("input", confirmarEnf);
+    DOM.inputCartaoFinalizar.addEventListener("input", confirmarEnf);
 
-let validandoEnf = false;
-let timerLeitor = null;
+    let validandoEnf = false;
 
-function confirmarEnf() {
-    if (validandoEnf) return;
+    async function confirmarEnf() {
+        if (validandoEnf) return;
 
-    // só números
-    DOM.inputCartaoFinalizar.value =
-        DOM.inputCartaoFinalizar.value.replace(/\D/g, "");
+        // garante apenas números
+        DOM.inputCartaoFinalizar.value =
+            DOM.inputCartaoFinalizar.value.replace(/\D/g, "");
 
-    const id = DOM.inputCartaoFinalizar.value;
+        const id = DOM.inputCartaoFinalizar.value;
 
-    // limpa timer anterior
-    clearTimeout(timerLeitor);
+        // aceita somente entre 8 e 10 dígitos
+        if (id.length < 8 || id.length > 10) return;
 
-    // espera o leitor terminar de "digitar"
-    timerLeitor = setTimeout(() => {
-        if (id.length < 9 || id.length > 10) return;
+        validandoEnf = true;
 
-        validarCartao(id);
-    }, 120); // 100~150ms é o ideal
-}
+        try {
+            const resp = await fetch("/verificar_funcionarios", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_cartao: id, tipo: "enfermagem" })
+            });
 
-async function validarCartao(id) {
-    validandoEnf = true;
+            validarJSON(resp);
+            const dados = await resp.json();
 
-    try {
-        const resp = await fetch("/verificar_funcionarios", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id_cartao: id, tipo: "enfermagem" })
-        });
+            if (!dados.sucesso) {
+                mostrarMensagem("Técnico não encontrado ou inativo.");
+                DOM.inputCartaoFinalizar.value = "";
+                DOM.inputCartaoFinalizar.focus();
+                return;
+            }
 
-        validarJSON(resp);
-        const dados = await resp.json();
+            // 💾 Salva o ID do cartão para uso posterior
+            localStorage.setItem("ultimoCartaoEnf", id);
 
-        if (!dados.sucesso) {
-            mostrarMensagem("Técnico não encontrado ou inativo.");
-            DOM.inputCartaoFinalizar.value = "";
-            DOM.inputCartaoFinalizar.focus();
-            return;
+            abrirConfirmacao(dados.nome, id);
+
+        } catch (erro) {
+            console.error("Erro ao verificar técnico:", erro);
+            mostrarMensagem("Erro ao verificar técnico.");
+        } finally {
+            validandoEnf = false;
         }
-
-        localStorage.setItem("ultimoCartaoEnf", id);
-        abrirConfirmacao(dados.nome, id);
-
-    } catch (erro) {
-        console.error("Erro ao verificar técnico:", erro);
-        mostrarMensagem("Erro ao verificar técnico.");
-    } finally {
-        validandoEnf = false;
     }
-}
-
 
 
     function abrirConfirmacao(nomeEnf, idCartao) {

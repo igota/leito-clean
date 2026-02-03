@@ -15,7 +15,6 @@
                 <tr>
                     <th>Setor</th>
                     <th>IP</th>
-                    <th>Quantidade Leitos</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -26,9 +25,8 @@
                     
                     <td>{{ d.setor }}</td>
                     <td>{{ d.ip }}</td>
-                    <td>{{ d.qtd_leitos }}</td>
                     <td>
-                        {% if d.situacao %}
+                        {% if d.ativo %}
                             <span class="badge bg-success">Ativo</span>
                         {% else %}
                             <span class="badge bg-danger">Inativo</span>
@@ -39,8 +37,7 @@
                         data-id="{{ d.id }}"
                         data-setor="{{ d.setor }}"
                         data-ip="{{ d.ip }}"
-                        data-qtd-leitos="{{ d.qtd_leitos }}"
-                        data-situacao="{{ d.situacao }}">
+                        data-ativo="{{ d.ativo }}">
                         <i class="bi bi-pencil"></i>
                     </button>
 
@@ -82,13 +79,9 @@
                         <label class="form-label">IP</label>
                         <input name="ip" class="form-control" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Quantidade de Leitos</label>
-                        <input name="qtd_leitos" type="number" class="form-control" required>
-                    </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="situacao" checked>
+                        <input class="form-check-input" type="checkbox" name="ativo" checked>
                         <label class="form-check-label">Ativo</label>
                     </div>
                 </div>
@@ -127,13 +120,9 @@
                         <label class="form-label">IP</label>
                         <input name="ip" id="editIp" class="form-control" required>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Quantidade de Leitos</label>
-                        <input name="qtd_leitos" type="number" id="editQtdLeitos" class="form-control" required>
-                    </div>
 
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="situacao" id="editSituacao">
+                        <input class="form-check-input" type="checkbox" name="ativo" id="editAtivo">
                         <label class="form-check-label">Ativo</label>
                     </div>
                 </div>

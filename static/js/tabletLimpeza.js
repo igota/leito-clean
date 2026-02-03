@@ -119,94 +119,84 @@ document.addEventListener("DOMContentLoaded", () => {
     });
         
     // 👉 Quando bipar cartão do funcionário limpeza (ASG)
-let timerLeitorASG = null;
-let validandoASG = false;
+    idcartaoInput.addEventListener("input", async function () {
+        let valor = this.value.trim();
 
-idcartaoInput.addEventListener("input", function () {
-    if (validandoASG) return;
+        // Remove tudo que não for dígito
+        valor = valor.replace(/\D/g, '');
 
-    let valor = this.value.replace(/\D/g, "");
-    this.value = valor;
+        // Atualiza o input (limpo, só números)
+        this.value = valor;
 
-    // cancela tentativa anterior
-    clearTimeout(timerLeitorASG);
-
-    // espera o leitor terminar
-    timerLeitorASG = setTimeout(() => {
-        if (valor.length < 9 || valor.length > 10) return;
-        validarCartaoASG(valor);
-    }, 120);
-});
-
-async function validarCartaoASG(id_cartao_enviado) {
-    validandoASG = true;
-
-    console.log("[DEBUG] Tentando buscar → ID enviado:", id_cartao_enviado);
-
-    try {
-        const resposta = await fetch("/verificar_funcionarios", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id_cartao: id_cartao_enviado, tipo: "asg" })
-        });
-
-        if (!resposta.ok) {
-            throw new Error(`HTTP ${resposta.status}`);
+        // Só processa quando tiver entre 8 e 10 dígitos
+        if (valor.length < 8 || valor.length > 10) {
+            return;
         }
 
-        const dados = await resposta.json();
+        // Vamos usar exatamente o valor recebido (sem adicionar zeros)
+        const id_cartao_enviado = valor;
 
-        if (!dados.sucesso) {
-            mostrarMensagem("Funcionário não encontrado ou inativo.", () => {
-                idcartaoInput.value = "";
-                idcartaoInput.focus();
+        console.log("[DEBUG] Tentando buscar → ID enviado:", id_cartao_enviado);
+
+        try {
+            const resposta = await fetch("/verificar_funcionarios", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id_cartao: id_cartao_enviado, tipo: "asg" })
             });
-            return;
-        }
 
-        // Funcionário identificado
-        funcionarioASG = dados.nome;
-        idcartaoFuncionario = id_cartao_enviado;
-
-        // Verifica se já tem limpeza ativa
-        const resLimpeza = await fetch("/verificar_limpeza_funcionario", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ funcionario_asg: funcionarioASG })
-        });
-
-        const verif = await resLimpeza.json();
-
-        if (verif.existe) {
-            mostrarMensagem(
-                `❌ ${verif.mensagem}\n\n` +
-                `Setor: ${verif.limpeza.setor}\n` +
-                `Leito: ${verif.limpeza.numero_leito}`,
-                () => {
-                    idcartaoInput.value = "";
-                    idcartaoInput.focus();
-                }
-            );
-            return;
-        }
-
-        // Tudo ok → prossegue
-        popupIdcartao.classList.add("oculto");
-        popupTipo.classList.remove("oculto");
-
-    } catch (erro) {
-        console.error("Erro ao processar cartão:", erro);
-        mostrarMensagem(
-            "Erro de comunicação com o servidor. Tente novamente.",
-            () => {
-                idcartaoInput.value = "";
-                idcartaoInput.focus();
+            if (!resposta.ok) {
+                throw new Error(`HTTP ${resposta.status}`);
             }
-        );
-    } finally {
-        validandoASG = false;
-    }
-}
+
+            const dados = await resposta.json();
+
+            if (!dados.sucesso) {
+                mostrarMensagem("Funcionário não encontrado ou inativo.", () => {
+                    this.value = "";
+                    this.focus();
+                });
+                return;
+            }
+
+            // Funcionário identificado
+            funcionarioASG = dados.nome;
+            idcartaoFuncionario = id_cartao_enviado;
+
+            // Verifica se já tem limpeza ativa
+            const resLimpeza = await fetch("/verificar_limpeza_funcionario", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ funcionario_asg: funcionarioASG })
+            });
+
+            const verif = await resLimpeza.json();
+
+            if (verif.existe) {
+                mostrarMensagem(
+                    `❌ ${verif.mensagem}\n\n` +
+                    `Setor: ${verif.limpeza.setor}\n` +
+                    `Leito: ${verif.limpeza.numero_leito}`,
+                    () => {
+                        this.value = "";
+                        this.focus();
+                    }
+                );
+                return;
+            }
+
+            // Tudo ok → prossegue
+            popupIdcartao.classList.add("oculto");
+            popupTipo.classList.remove("oculto");
+
+        } catch (erro) {
+            console.error("Erro ao processar cartão:", erro);
+            mostrarMensagem("Erro de comunicação com o servidor. Tente novamente.", () => {
+                this.value = "";
+                this.focus();
+            });
+        }
+    });
 
 
 

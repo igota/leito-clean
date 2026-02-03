@@ -1,6 +1,7 @@
 # Executáveis / build
 dist/
 build/
+banco de dados/
 *.exe
 
 # Python

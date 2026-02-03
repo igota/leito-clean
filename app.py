@@ -43,8 +43,21 @@ EMAIL_PORT = 587
 EMAIL_USER = "cleanleito@gmail.com"
 EMAIL_PASSWORD = "ogtknovurmjxbqlh"
 
+EMAIL_DESTINATARIOS = [
+    "igotadafiel@gmail.com"
+    
+]
+
+
 LEITOS_CACHE_FILE = "data\leitos_por_ip.json"
 INTERVALO_ATUALIZACAO = 60 # 1 minutos 
+
+LEITOS_FIXOS_POR_SETOR = {
+    "UCINCO": 30,
+    "UTI ADULTO III": 10,
+    "UTI ADULTO IV": 10
+    
+}
 
 timers_limpeza = {}
 
@@ -108,8 +121,8 @@ def inject_user():
 
 # Função para login e navegação até a página de prontuário (Principal)
 def login_if_needed(username, password):
-    BASE_URL = "http://10.2.2.8:8080"
-    #BASE_URL = "https://sistemasnti.isgh.org.br"
+    #BASE_URL = "http://10.2.2.8:8080"
+    BASE_URL = "https://sistemasnti.isgh.org.br"
     LOGIN_URL = f"{BASE_URL}/pacientehrn/login.jsf"
     PAGINA_PRINCIPAL = f"{BASE_URL}/pacientehrn/paginaPrincipal.jsf"
 
@@ -329,8 +342,7 @@ def get_cronograma_info(username, password):
 def login_e_buscar_leitos(setores_desejados: List[str]) -> List[Dict]:
      
     # Configurações
-    #BASE_URL = "https://sistemasnti.isgh.org.br"
-    BASE_URL = "http://10.2.2.8:8080"
+    BASE_URL = "https://sistemasnti.isgh.org.br"
     LOGIN_URL = f"{BASE_URL}/pacientehrn/login.jsf"
     PEP_URL = f"{BASE_URL}/pacientehrn/cs_pep_sem_status.jsf"
     
@@ -1035,8 +1047,8 @@ def cadastrar_funcionarios():
     if not (nome and cpf and id_cartao and tipo):
         return jsonify({"erro": "⚠️ Preencha todos os campos obrigatórios."}), 400
 
-    # Validação: 9 a 10 dígitos, apenas números
-    if not (9 <= len(id_cartao) <= 10) or not id_cartao.isdigit():
+    # Validação: 8 a 10 dígitos, apenas números
+    if not (8 <= len(id_cartao) <= 10) or not id_cartao.isdigit():
         return jsonify({"erro": "⚠️ O ID do cartão deve conter entre 8 e 10 números."}), 400
 
     try:
@@ -1242,73 +1254,25 @@ def get_leitos_por_setor():
     logging.info(f"➡️ Setor solicitado: {setor}")
 
     if not setor:
-        return jsonify({
-            "status": "erro",
-            "mensagem": "Setor não informado"
-        }), 400
+        return jsonify({"status": "erro", "mensagem": "Setor não informado"}), 400
 
-    # ===============================
-    # 🔹 BUSCA QTD_LEITOS NO BANCO
-    # ===============================
-    try:
-        conn = get_db_connection()
-        with conn.cursor() as cursor:
-            cursor.execute("""
-                SELECT qtd_leitos
-                FROM dispositivos
-                WHERE ip = %s
-                  AND setor = %s
-                  AND situacao = 1
-                LIMIT 1
-            """, (ip_cliente, setor))
-
-            row = cursor.fetchone()
-
-        conn.close()
-
-        if not row or row["qtd_leitos"] is None:
-            return jsonify({
-                "status": "erro",
-                "mensagem": "Quantidade de leitos não configurada para este setor"
-            }), 404
-
-        total_fixos = int(row["qtd_leitos"])
-
-    except Exception:
-        logging.exception("Erro ao buscar qtd_leitos em dispositivos")
-        return jsonify({
-            "status": "erro",
-            "mensagem": "Erro ao consultar configuração de leitos"
-        }), 500
-
-    # ===============================
-    # 🔹 CARREGA CACHE DE LEITOS
-    # ===============================
     caminho_json = LEITOS_CACHE_FILE
 
     if not os.path.exists(caminho_json):
         logging.error(f"❌ JSON não encontrado: {caminho_json}")
-        return jsonify({
-            "status": "erro",
-            "mensagem": "Dados não disponíveis"
-        }), 404
+        return jsonify({"status": "erro", "mensagem": "Dados não disponíveis"}), 404
 
     try:
         with open(caminho_json, "r", encoding="utf-8") as f:
-            dados = json.load(f)
+            dados = json.load(f)                    # nome diferente para evitar confusão
     except json.JSONDecodeError as e:
-        logging.error(f"JSON inválido: {e}")
-        return jsonify({
-            "status": "erro",
-            "mensagem": "Formato de dados inválido"
-        }), 500
-    except Exception:
-        logging.exception("Erro ao ler JSON de cache")
-        return jsonify({
-            "status": "erro",
-            "mensagem": "Erro ao ler dados"
-        }), 500
+        logging.error(f"JSON inválido em {caminho_json}: {e}")
+        return jsonify({"status": "erro", "mensagem": "Formato de dados inválido"}), 500
+    except Exception as e:
+        logging.exception(f"Erro ao ler {caminho_json}")
+        return jsonify({"status": "erro", "mensagem": "Erro ao ler dados"}), 500
 
+    # Agora usa o que foi carregado
     dados_ip = dados.get(ip_cliente)
 
     if not dados_ip:
@@ -1322,17 +1286,28 @@ def get_leitos_por_setor():
         if l.get("setor") == setor
     ]
 
+
     logging.info(f"📦 Registros no setor '{setor}': {len(leitos_setor)}")
 
+    if not leitos_setor:
+        return jsonify({
+            "status": "erro",
+            "mensagem": "Nenhum leito encontrado para este setor neste dispositivo"
+        }), 404
+
     # ===============================
-    # 🔹 PROCESSAMENTO DOS LEITOS
+    # 🔽 A PARTIR DAQUI É SEU CÓDIGO
     # ===============================
+
+    total_fixos = LEITOS_FIXOS_POR_SETOR.get(setor, 0)
+
     leitos_fixos_ocupados = set()
     mapa_pacientes_fixos = {}
     leitos_extras = []
 
     for l in leitos_setor:
-        numero_leito = (l.get("numero_leito") or "").strip()
+        numero_leito_raw = l.get("numero_leito", "")
+        numero_leito = numero_leito_raw.strip()
         paciente = l.get("paciente")
 
         if numero_leito.isdigit():
@@ -1345,9 +1320,6 @@ def get_leitos_por_setor():
                 "paciente": paciente
             })
 
-    # ===============================
-    # 🔹 MONTA RESPOSTA
-    # ===============================
     resultado = []
 
     for leito in range(1, total_fixos + 1):
@@ -1372,11 +1344,7 @@ def get_leitos_por_setor():
             "paciente": extra["paciente"]
         })
 
-    return jsonify({
-        "status": "ok",
-        "leitos": resultado
-    })
-
+    return jsonify({"status": "ok", "leitos": resultado})
 
 
 
@@ -1836,16 +1804,12 @@ def atualiza_pendentes():
                 conn.commit()
 
                 for p in pendentes:
-                    emails = buscar_emails_por_setor(p["setor"])
-
                     enviado = enviar_email_pendente(
-                        destinatarios=emails,
                         leito=p["numero_leito"],
                         setor=p["setor"],
                         ultima_limpeza=p["data_fim"],
                         vencimento=p["vencimento"]
                     )
-
 
                     if enviado:
                         cursor.execute(
@@ -1863,19 +1827,6 @@ def atualiza_pendentes():
         time.sleep(60)
 
   
-def buscar_emails_por_setor(setor):
-    conn = get_db_connection()
-    with conn.cursor() as cursor:
-        cursor.execute("""
-            SELECT DISTINCT email
-            FROM emails_notificacao
-            WHERE situacao = 1
-              AND (setor = %s OR setor = 'TODOS')
-        """, (setor,))
-        rows = cursor.fetchall()
-    conn.close()
-
-    return [r["email"] for r in rows]
 
 
 @app.route("/relatorios")
@@ -2122,7 +2073,7 @@ def setores_por_ip(ip):
                 SELECT setor
                 FROM dispositivos
                 WHERE ip = %s
-                  AND situacao = TRUE
+                  AND ativo = TRUE
             """, (ip,))
             return [row["setor"] for row in cursor.fetchall()]
     finally:
@@ -2194,7 +2145,7 @@ def buscar_ips_e_setores_ativos():
             cursor.execute("""
                 SELECT ip, setor
                 FROM dispositivos
-                WHERE situacao = TRUE
+                WHERE ativo = TRUE
             """)
             rows = cursor.fetchall()
 
@@ -2272,11 +2223,7 @@ def get_server_time():
 
 
 
-def enviar_email_pendente(destinatarios, leito, setor, ultima_limpeza, vencimento):
-    if not destinatarios:
-        print("⚠️ Nenhum email configurado para este setor")
-        return False
-
+def enviar_email_pendente(leito, setor, ultima_limpeza, vencimento):
     assunto = "⚠️ ALERTA: Limpeza de Leito PENDENTE!"
 
     corpo = f"""
@@ -2295,7 +2242,7 @@ Sistema Leito Clean
 
     msg = MIMEMultipart()
     msg["From"] = EMAIL_USER
-    msg["To"] = ", ".join(destinatarios)
+    msg["To"] = ", ".join(EMAIL_DESTINATARIOS)
     msg["Subject"] = assunto
     msg.attach(MIMEText(corpo, "plain"))
 
@@ -2305,7 +2252,7 @@ Sistema Leito Clean
             server.login(EMAIL_USER, EMAIL_PASSWORD)
             server.send_message(msg)
 
-        print(f"📧 Email enviado para: {destinatarios}")
+        print("📧 E-mail enviado com sucesso")
         return True
 
     except Exception as e:
@@ -2328,28 +2275,27 @@ def config():
         # SALVAR / EDITAR
         if request.method == "POST":
             id_dispositivo = request.form.get("id")
-            setor = request.form["setor"].strip()
             ip = request.form["ip"].strip()
-            qtd_leitos = request.form["qtd_leitos"].strip()
-            situacao = 1 if request.form.get("situacao") == "on" else 0
+            setor = request.form["setor"].strip()
+            ativo = 1 if request.form.get("ativo") == "on" else 0
 
             if id_dispositivo:  # editar
                 cursor.execute("""
                     UPDATE dispositivos
-                    SET setor=%s, ip=%s, qtd_leitos=%s, situacao=%s
+                    SET ip=%s, setor=%s, ativo=%s
                     WHERE id=%s
-                """, (setor, ip, qtd_leitos, situacao, id_dispositivo))
+                """, (ip, setor, ativo, id_dispositivo))
             else:  # inserir
                 cursor.execute("""
-                    INSERT INTO dispositivos (setor, ip, qtd_leitos, situacao)
-                    VALUES (%s, %s, %s, %s)
-                """, (setor, ip, qtd_leitos, situacao))
+                    INSERT INTO dispositivos (ip, setor, ativo)
+                    VALUES (%s, %s, %s)
+                """, (ip, setor, ativo))
 
             return redirect(url_for("config"))
 
         # LISTAR
         cursor.execute("""
-            SELECT id, ip, setor, qtd_leitos, situacao
+            SELECT id, ip, setor, ativo
             FROM dispositivos
             ORDER BY setor, ip
         """)
